@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "carwash"
-    config.vm.host_name = "carwarh"
+    config.vm.host_name = "carwash"
     config.vm.network :private_network, ip: "192.168.33.11"
 
     config.vm.provider "virtualbox" do |vb|
