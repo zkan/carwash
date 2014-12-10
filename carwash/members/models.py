@@ -24,3 +24,9 @@ class Member(models.Model):
         null=True,
         blank=True
     )
+
+    phone = models.CharField(
+        null=True,
+        blank=True,
+        max_length=20
+    )

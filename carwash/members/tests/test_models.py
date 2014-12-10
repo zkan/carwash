@@ -15,6 +15,7 @@ class MemberTest(TestCase):
         self.member.last_name = 'Ouivirach'
         self.member.email = 'zkan.cs@gmail.com'
         self.member.birthdate = '1984-05-04'
+        self.member.phone = '083-749-5568'
 
         self.assertFalse(self.member.pk)
 
@@ -28,6 +29,7 @@ class MemberTest(TestCase):
         self.assertEqual(member.last_name, 'Ouivirach')
         self.assertEqual(member.email, 'zkan.cs@gmail.com')
         self.assertEqual(member.birthdate, datetime.date(1984, 5, 4))
+        self.assertEqual(member.phone, '083-749-5568')
 
     def test_add_new_member_without_first_name_should_fail(self):
         self.member.first_name = None
@@ -55,6 +57,14 @@ class MemberTest(TestCase):
         self.member.first_name = 'Kan'
         self.member.last_name = 'Ouivirach'
         self.member.birthdate = None
+        self.member.save()
+
+        self.assertTrue(self.member.pk)
+
+    def test_add_new_member_without_phone_should_pass(self):
+        self.member.first_name = 'Kan'
+        self.member.last_name = 'Ouivirach'
+        self.member.phone = None
         self.member.save()
 
         self.assertTrue(self.member.pk)
