@@ -1,4 +1,5 @@
 import datetime
+from datetime import date
 
 from django.db import IntegrityError
 from django.test import TestCase
@@ -30,6 +31,7 @@ class MemberTest(TestCase):
         self.assertEqual(member.email, 'zkan.cs@gmail.com')
         self.assertEqual(member.birthdate, datetime.date(1984, 5, 4))
         self.assertEqual(member.phone, '083-749-5568')
+        self.assertEqual(member.signup_date, date.today())
 
     def test_add_new_member_without_first_name_should_fail(self):
         self.member.first_name = None

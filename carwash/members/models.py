@@ -30,3 +30,9 @@ class Member(models.Model):
         blank=True,
         max_length=20
     )
+
+    signup_date = models.DateField(
+        null=True,
+        blank=True,
+        auto_now_add=True
+    )
