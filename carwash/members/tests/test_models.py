@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import IntegrityError
 from django.test import TestCase
 
@@ -12,12 +14,20 @@ class MemberTest(TestCase):
         self.member.first_name = 'Kan'
         self.member.last_name = 'Ouivirach'
         self.member.email = 'zkan.cs@gmail.com'
+        self.member.birthdate = '1984-05-04'
 
         self.assertFalse(self.member.pk)
 
         self.member.save()
 
         self.assertTrue(self.member.pk)
+
+        member = Member.objects.get(id=self.member.id)
+
+        self.assertEqual(member.first_name, 'Kan')
+        self.assertEqual(member.last_name, 'Ouivirach')
+        self.assertEqual(member.email, 'zkan.cs@gmail.com')
+        self.assertEqual(member.birthdate, datetime.date(1984, 5, 4))
 
     def test_add_new_member_without_first_name_should_fail(self):
         self.member.first_name = None
@@ -37,6 +47,14 @@ class MemberTest(TestCase):
         self.member.first_name = 'Kan'
         self.member.last_name = 'Ouivirach'
         self.member.email = None
+        self.member.save()
+
+        self.assertTrue(self.member.pk)
+
+    def test_add_new_member_without_birthdate_should_pass(self):
+        self.member.first_name = 'Kan'
+        self.member.last_name = 'Ouivirach'
+        self.member.birthdate = None
         self.member.save()
 
         self.assertTrue(self.member.pk)

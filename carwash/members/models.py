@@ -19,3 +19,8 @@ class Member(models.Model):
         blank=True,
         max_length=254
     )
+
+    birthdate = models.DateField(
+        null=True,
+        blank=True
+    )
