@@ -129,3 +129,18 @@ class CarTest(TestCase):
         self.car.size = None
 
         self.assertRaises(IntegrityError, self.car.save)
+
+    def test_display_car_object_should_be_readable(self):
+        self.car.owner = self.owner
+        self.car.brand = 'Mitsubishi'
+        self.car.model = 'Triton'
+        self.car.license_plate_letters = '2AB'
+        self.car.license_plate_numbers = '5334'
+        self.car.license_plate_province = 'Bangkok'
+        self.car.color = 'Brown'
+        self.car.size = 'L'
+
+        self.assertEqual(
+            self.car.__unicode__(),
+            'Mitsubishi Triton (Kan Ouivirach)'
+        )

@@ -54,3 +54,11 @@ class Car(models.Model):
         blank=False,
         max_length=5
     )
+
+    def __unicode__(self):
+        return '%s %s (%s %s)' % (
+            self.brand,
+            self.model,
+            self.owner.first_name,
+            self.owner.last_name
+        )
