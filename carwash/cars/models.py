@@ -1,7 +1,18 @@
 from django.db import models
+from django.utils.translation import ugettext, ugettext_lazy as _
+
+from members.models import Member
 
 
 class Car(models.Model):
+    owner = models.ForeignKey(
+        Member,
+        null=False,
+        blank=False,
+        verbose_name=_('owner'),
+        default=0
+    )
+
     brand = models.CharField(
         null=False,
         blank=False,
@@ -26,7 +37,7 @@ class Car(models.Model):
         max_length=10
     )
 
-    license_plate_provice = models.CharField(
+    license_plate_province = models.CharField(
         null=False,
         blank=False,
         max_length=30
