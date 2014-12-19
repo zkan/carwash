@@ -70,3 +70,16 @@ class MemberTest(TestCase):
         self.member.save()
 
         self.assertTrue(self.member.pk)
+
+    def test_display_member_object_should_be_readable(self):
+        self.member.first_name = 'Kan'
+        self.member.last_name = 'Ouivirach'
+        self.member.email = 'zkan.cs@gmail.com'
+        self.member.birthdate = '1984-05-04'
+        self.member.phone = '083-749-5568'
+        self.member.save()
+
+        self.assertEqual(
+            self.member.__unicode__(),
+            'Kan Ouivirach'
+        )
