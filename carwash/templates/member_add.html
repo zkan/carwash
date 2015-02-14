@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>New Member Information</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>First Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.first_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Last Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.last_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Email:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Birth Day:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.birth_day }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Birth Month:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.birth_month }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Birth Year:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.birth_year }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Phone:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {{ form.phone}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button name="submit" class="btn btn-success pull-lef" type="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
