@@ -15,6 +15,7 @@ class PackageTest(TestCase):
         self.package.created_date = '2015-05-04'
         self.package.start_date = '2015-06-11'
         self.package.notification_type = 'weekly'
+        self.package.notification_frequency = 5
 
         self.assertFalse(self.package.pk)
 
@@ -28,6 +29,7 @@ class PackageTest(TestCase):
         self.assertEqual(package.created_date, datetime.date(2015, 5, 4))
         self.assertEqual(package.start_date, datetime.date(2015, 6, 11))
         self.assertEqual(package.notification_type, 'weekly')
+        self.assertEqual(package.notification_frequency, 5)
 
     def test_add_new_package_without_name_should_fail(self):
         self.package.name = None
@@ -59,3 +61,23 @@ class PackageTest(TestCase):
         self.package.notification_type = None
 
         self.assertRaises(IntegrityError, self.package.save)
+
+    def test_add_new_package_without_notification_frequency_should_fail(self):
+        self.package.name = 'Wash'
+        self.package.created_date = '2015-05-04'
+        self.package.start_date = '2015-06-11'
+        self.package.notification_type = 'weekly'
+        self.package.notification_frequency = None
+
+        self.assertRaises(IntegrityError, self.package.save)
+
+    def test_new_package_without_notification_freq_uses_default_value(self):
+        self.package.name = 'Wash'
+        self.package.created_date = '2015-05-04'
+        self.package.start_date = '2015-06-11'
+        self.package.notification_type = 'weekly'
+        self.package.save()
+
+        package = Package.objects.get(id=self.package.id)
+
+        self.assertEqual(package.notification_frequency, 1)

@@ -23,3 +23,9 @@ class Package(models.Model):
         blank=False,
         max_length=100
     )
+
+    notification_frequency = models.IntegerField(
+        null=False,
+        blank=False,
+        default=1
+    )
