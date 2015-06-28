@@ -17,3 +17,9 @@ class Package(models.Model):
         null=True,
         blank=True
     )
+
+    notification_type = models.CharField(
+        null=False,
+        blank=False,
+        max_length=100
+    )
